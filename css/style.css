@@ -9,11 +9,22 @@ font-family: 'Montserrat', sans-serif;
 .bg-azul{
     background-color: #2767CD;
 }
+.bg-bco {
+    background-color:#ffffff
+}
 .bco {
     color:#ffffff
 }
+.negro {
+    color:#000000
+}
 .contenedor {
     background-color:#ffffff;
+    border-radius:4px;
+
+}
+.contenedor2 {
+    background-color:#FAFAF9;
     border-radius:4px;
 
 }
@@ -38,8 +49,30 @@ font-family: 'Montserrat', sans-serif;
     border:none;
 
 }
+.boton:hover {
+    background-color: #2262C6;
+
+
+}
 .logo {
     width:216px;
+}
+
+table {
+    border:1px solid #EDEDED;
+    background-color:#ffffff;
+}
+thead {
+    background-color:#ffffff;
+    border-bottom:1px solid #989595;
+    
+}
+th {
+    padding:10px
+}
+td {
+    padding:10px;
+    border-bottom:1px solid #EDEDED;
 }
 
 input {

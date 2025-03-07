@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <script>
         function showTable(tableId) {
@@ -35,21 +36,22 @@
     </script>
 </head>
 <body class="bg-azul overflow-hidden p-4">
-    <div class="contenedor w-100">
+    <div class="contenedor2 w-100">
         <div class="row p-4 d-flex justify-content-center">
-            
-            <div class="col-md-11 p-4 pl-5 ">
-                <nav>
-                    <a href="#" data-table="clientes">Clientes</a>
-                    <a href="#" data-table="proveedores">Proveedores</a>
-                    <a href="#" data-table="productos">Productos</a>
-                    <a href="#" data-table="empleados">Empleados</a>
+        <div class="col-md-3 bg-bco p-4 pl-5 ">
+              <p class="fs18 bold fsMono">Menu</p>
+                <nav class="d-flex flex-column pl-2">
+                    <a href="#" class="negro bold" data-table="clientes">Clientes</a>
+                    <a href="#" class="negro bold mt-3" data-table="productos">Productos</a>
+                    <a href="#" class="negro bold mt-3" data-table="proveedores">Proveedores</a>
+                    <a href="#" class="negro bold mt-3" data-table="empleados">Empleados</a>
                 </nav>
-
+            </div>
+            <div class="col-md-9 p-4 pl-5 ">
                 <div id="clientes" class="table-section">
-                    <h1>Lista de clientes</h1>
-                    <a href="agregar.php">Nuevo cliente</a>
-                    <table>
+                    <h1 class="fs18 bold fsMono">Lista de clientes</h1>
+                    <p class="text-right"><a href="agregar.php" class="boton bold">Nuevo cliente</a></p>
+                    <table class="w-100">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -75,8 +77,8 @@
                                                 <td>" . $row["Email"]. "</td>
                                                 <td>" . $row["Telefono"]. "</td>
                                                 <td>
-                                                    <a href='editar.php?id=" . $row["ID_Cliente"] . "'>Editar</a>
-                                                    <a href='eliminar.php?id=" . $row["ID_Cliente"] . "'>Eliminar</a>
+                                                    <a class='mr-4' href='editar.php?id=" . $row["ID_Cliente"] . "'><i class='fa-solid fa-pen-to-square negro fs18'></i></a>
+                                                    <a href='eliminar.php?id=" . $row["ID_Cliente"] . "'><i class='fa-solid fa-xmark negro fs18'></i></a>
                                                 </td>
                                             </tr>";
                                     }
@@ -90,7 +92,7 @@
                 </div>
 
                 <div id="proveedores" class="table-section" style="display: none;">
-                    <h1>Lista de proveedores</h1>
+                    <h1 class="fs18 bold fsMono">Lista de proveedores</h1>
                     <a href="agregar.php">Nuevo proveedor</a>
                     <table>
                         <thead>
@@ -133,7 +135,7 @@
                 </div>
 
                 <div id="productos" class="table-section" style="display: none;">
-                    <h1>Lista de productos</h1>
+                    <h1  class="fs18 bold fsMono">Lista de productos</h1>
                     <a href="agregar.php">Nuevo producto</a>
                     <table>
                         <thead>
@@ -176,7 +178,7 @@
                 </div>
 
                 <div id="empleados" class="table-section" style="display: none;">
-                    <h1>Lista de empleados</h1>
+                    <h1 class="fs18 bold fsMono">Lista de empleados</h1>
                     <a href="agregar.php">Nuevo empleado</a>
                     <table>
                         <thead>
@@ -220,6 +222,25 @@
             </div>
         </div>
     </div>
+<div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 
 <!-- Popper JS -->
