@@ -39,7 +39,8 @@
     <div class="contenedor2 w-100">
         <div class="row p-4 d-flex justify-content-center">
         <div class="col-md-3 bg-bco p-4 pl-5 ">
-              <p class="fs18 bold fsMono">Menu</p>
+            <img src="img/logoAzul.png" class="logo">
+              <p class="fs18 bold fsMono mt-5">Menu</p>
                 <nav class="d-flex flex-column pl-2">
                     <a href="#" class="negro bold" data-table="clientes">Clientes</a>
                     <a href="#" class="negro bold mt-3" data-table="productos">Productos</a>
@@ -93,8 +94,8 @@
 
                 <div id="proveedores" class="table-section" style="display: none;">
                     <h1 class="fs18 bold fsMono">Lista de proveedores</h1>
-                    <a href="agregar.php">Nuevo proveedor</a>
-                    <table>
+                    <p class="text-right"><a href="agregar.php" class="boton bold">Nuevo proveedor</a></p>
+                    <table class="w-100">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -136,8 +137,8 @@
 
                 <div id="productos" class="table-section" style="display: none;">
                     <h1  class="fs18 bold fsMono">Lista de productos</h1>
-                    <a href="agregar.php">Nuevo producto</a>
-                    <table>
+                    <p class="text-right"><a href="agregar.php" class="boton bold">Nuevo producto</a></p>
+                    <table class="w-100">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -179,8 +180,8 @@
 
                 <div id="empleados" class="table-section" style="display: none;">
                     <h1 class="fs18 bold fsMono">Lista de empleados</h1>
-                    <a href="agregar.php">Nuevo empleado</a>
-                    <table>
+                    <p class="text-right"><a href="agregar.php" class="boton bold">Nuevo empleado</a></p>
+                    <table class="w-100">
                         <thead>
                             <tr>
                                 <th>Id</th>
@@ -222,25 +223,7 @@
             </div>
         </div>
     </div>
-<div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 
 <!-- Popper JS -->
