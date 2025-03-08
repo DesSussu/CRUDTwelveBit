@@ -7,13 +7,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $telefono = $_POST['telefono'];
 
-    $sql = "INSERT INTO clientes (Nombre, Apellidos, Email, Telefono) VALUES ('$nombre', '$apellidos', '$email', '$telefono')";
+    $sql = "INSERT INTO empleados (Nombre, Apellidos, Email, Telefono) VALUES ('$nombre', '$apellidos', '$email', '$telefono')";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Cliente agregado');
+        echo "<script>alert('Empleado agregado');
             location.assign('index.php'); </script>";
     } else {
-        echo "<script>alert('Cliente NO se ha agregado');
+        echo "<script>alert('Empleado NO se ha agregado');
             location.assign('index.php'); </script>";
     }
 
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agregar Cliente</title>
+    <title>Agregar Empleado</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,8 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         <div class="row p-4 d-flex justify-content-center">
             <div class="col-lg-4 col-md-6 col-10 p-5 d-flex flex-column align-items-center contenedor">
-            <h1 class="fs18 bold fsMono mb-4">Agregar Cliente</h1>
-                <form action="agregar.php" method="POST" class="d-flex flex-column align-items-center mt-1">
+            <h1 class="fs18 bold fsMono mb-4">Agregar Empleado</h1>
+                <form action="agregarEmpleados.php" method="POST" class="d-flex flex-column align-items-center mt-1">
                     <div>
                         <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
                     </div>
@@ -57,8 +57,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="mt-3">
                         <input type="text" id="telefono" name="telefono" placeholder="Teléfono" required>
                     </div>
-                    <button type="submit" class="boton mt-5 w-100">Agregar Cliente</button>
-                    <a href="index.php" class="mt-3 fs12 text-center">Volver a la lista de clientes</a>
+                    <button type="submit" class="boton mt-5 w-100">Agregar Empleado</button>
+                    <a href="index.php" class="mt-3 fs12 text-center">Volver a la lista de Empleados</a>
                 </form>
             </div>
         </div>

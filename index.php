@@ -16,7 +16,7 @@
             // Ocultar todas las tablas
             document.querySelectorAll('.table-section').forEach(function(section) {
                 section.style.display = 'none';
-            });
+            });[]
             // Mostrar la tabla seleccionada
             document.getElementById(tableId).style.display = 'block';
         }
@@ -42,10 +42,10 @@
             <img src="img/logoAzul.png" class="logo">
               <p class="fs18 bold fsMono mt-5">Menu</p>
                 <nav class="d-flex flex-column pl-2">
-                    <a href="#" class="negro bold" data-table="clientes">Clientes</a>
-                    <a href="#" class="negro bold mt-3" data-table="productos">Productos</a>
-                    <a href="#" class="negro bold mt-3" data-table="proveedores">Proveedores</a>
-                    <a href="#" class="negro bold mt-3" data-table="empleados">Empleados</a>
+                    <a href="#" id="nav_0" class="negro bold" data-table="clientes">Clientes</a>
+                    <a href="#" id="nav_1" class="negro bold mt-3" data-table="productos">Productos</a>
+                    <a href="#" id="nav_2" class="negro bold mt-3" data-table="proveedores">Proveedores</a>
+                    <a href="#" id="nav_3" class="negro bold mt-3" data-table="empleados">Empleados</a>
                 </nav>
             </div>
             <div class="col-md-9 p-4 pl-5 ">
@@ -94,14 +94,14 @@
 
                 <div id="proveedores" class="table-section" style="display: none;">
                     <h1 class="fs18 bold fsMono">Lista de proveedores</h1>
-                    <p class="text-right"><a href="agregar.php" class="boton bold">Nuevo proveedor</a></p>
+                    <p class="text-right"><a href="agregarProveedores.php" class="boton bold">Nuevo proveedor</a></p>
                     <table class="w-100">
                         <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Email</th>
+                                <th>CIF</th>
+                                <th>Dirección</th>
                                 <th>Teléfono</th>
                                 <th>Acciones</th>
                             </tr>
@@ -117,12 +117,12 @@
                                         echo "<tr>
                                                 <td>" . $row["ID_Proveedor"]. "</td>
                                                 <td>" . $row["Nombre"]. "</td>
-                                                <td>" . $row["Apellidos"]. "</td>
-                                                <td>" . $row["Email"]. "</td>
+                                                <td>" . $row["CIF"]. "</td>
+                                                <td>" . $row["Direccion"]. "</td>
                                                 <td>" . $row["Telefono"]. "</td>
                                                 <td>
-                                                    <a href='editar.php?id=" . $row["ID_Proveedor"] . "'>Editar</a>
-                                                    <a href='eliminar.php?id=" . $row["ID_Proveedor"] . "'>Eliminar</a>
+                                                    <a class='mr-4' href='editarProveedores.php?id=" . $row["ID_Proveedor"] . "'><i class='fa-solid fa-pen-to-square negro fs18'></i></a>
+                                                    <a href='eliminarProveedores.php?id=" . $row["ID_Proveedor"] . "'><i class='fa-solid fa-xmark negro fs18'></i></a>
                                                 </td>
                                             </tr>";
                                     }
@@ -137,15 +137,14 @@
 
                 <div id="productos" class="table-section" style="display: none;">
                     <h1  class="fs18 bold fsMono">Lista de productos</h1>
-                    <p class="text-right"><a href="agregar.php" class="boton bold">Nuevo producto</a></p>
+                    <p class="text-right"><a href="agregarProductos.php" class="boton bold">Nuevo producto</a></p>
                     <table class="w-100">
                         <thead>
                             <tr>
                                 <th>Id</th>
                                 <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Email</th>
-                                <th>Teléfono</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -158,14 +157,13 @@
                                 if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
                                         echo "<tr>
-                                                <td>" . $row["ID_Producto"]. "</td>
+                                                <td>" . $row["Codigo"]. "</td>
                                                 <td>" . $row["Nombre"]. "</td>
-                                                <td>" . $row["Apellidos"]. "</td>
-                                                <td>" . $row["Email"]. "</td>
-                                                <td>" . $row["Telefono"]. "</td>
+                                                <td>" . $row["Precio"]. "</td>
+                                                <td>" . $row["Stock"]. "</td>
                                                 <td>
-                                                    <a href='editar.php?id=" . $row["ID_Producto"] . "'>Editar</a>
-                                                    <a href='eliminar.php?id=" . $row["ID_Producto"] . "'>Eliminar</a>
+                                                    <a class='mr-4' href='editarProductos.php?id=" . $row["Codigo"] . "'><i class='fa-solid fa-pen-to-square negro fs18'></i></a>
+                                                    <a href='eliminarProductos.php?id=" . $row["Codigo"] . "'><i class='fa-solid fa-xmark negro fs18'></i></a>
                                                 </td>
                                             </tr>";
                                     }
@@ -180,7 +178,7 @@
 
                 <div id="empleados" class="table-section" style="display: none;">
                     <h1 class="fs18 bold fsMono">Lista de empleados</h1>
-                    <p class="text-right"><a href="agregar.php" class="boton bold">Nuevo empleado</a></p>
+                    <p class="text-right"><a href="agregarEmpleados.php" class="boton bold">Nuevo empleado</a></p>
                     <table class="w-100">
                         <thead>
                             <tr>
@@ -201,14 +199,14 @@
                                 if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
                                         echo "<tr>
-                                                <td>" . $row["ID_Empleado"]. "</td>
+                                                <td>" . $row["Cod_Empleado"]. "</td>
                                                 <td>" . $row["Nombre"]. "</td>
                                                 <td>" . $row["Apellidos"]. "</td>
                                                 <td>" . $row["Email"]. "</td>
                                                 <td>" . $row["Telefono"]. "</td>
                                                 <td>
-                                                    <a href='editar.php?id=" . $row["ID_Empleado"] . "'>Editar</a>
-                                                    <a href='eliminar.php?id=" . $row["ID_Empleado"] . "'>Eliminar</a>
+                                                    <a class='mr-4' href='editarEmpleados.php?id=" . $row["Cod_Empleado"] . "'><i class='fa-solid fa-pen-to-square negro fs18'></i></a>
+                                                    <a href='eliminarEmpleados.php?id=" . $row["Cod_Empleado"] . "'><i class='fa-solid fa-xmark negro fs18'></i></a>
                                                 </td>
                                             </tr>";
                                     }

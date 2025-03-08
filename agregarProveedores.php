@@ -3,17 +3,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'conexion.php';
 
     $nombre = $_POST['nombre'];
-    $apellidos = $_POST['apellidos'];
-    $email = $_POST['email'];
+    $CIF = $_POST['CIF'];
+    $direccion = $_POST['direccion'];
     $telefono = $_POST['telefono'];
 
-    $sql = "INSERT INTO clientes (Nombre, Apellidos, Email, Telefono) VALUES ('$nombre', '$apellidos', '$email', '$telefono')";
+    $sql = "INSERT INTO proveedores (Nombre, CIF, Direccion, Telefono) VALUES ('$nombre', '$cif', '$direccion', '$telefono')";
 
     if ($conn->query($sql) === TRUE) {
         echo "<script>alert('Cliente agregado');
             location.assign('index.php'); </script>";
     } else {
-        echo "<script>alert('Cliente NO se ha agregado');
+        echo "<script>alert('Cliente NO se ha agregadoS');
             location.assign('index.php'); </script>";
     }
 
@@ -44,21 +44,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="row p-4 d-flex justify-content-center">
             <div class="col-lg-4 col-md-6 col-10 p-5 d-flex flex-column align-items-center contenedor">
             <h1 class="fs18 bold fsMono mb-4">Agregar Cliente</h1>
-                <form action="agregar.php" method="POST" class="d-flex flex-column align-items-center mt-1">
+                <form action="agregarProveedores.php" method="POST" class="d-flex flex-column align-items-center mt-1">
                     <div>
                         <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
                     </div>
                     <div class="mt-3">
-                        <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required>
+                        <input type="text" id="CIF" name="CIF" placeholder="CIF" required>
                     </div>
                     <div class="mt-3">
-                        <input type="email" id="email" name="email" placeholder="Email" required>
+                        <input type="direccion" id="direccion" name="direccion" placeholder="Dirección" required>
                     </div>
                     <div class="mt-3">
                         <input type="text" id="telefono" name="telefono" placeholder="Teléfono" required>
                     </div>
-                    <button type="submit" class="boton mt-5 w-100">Agregar Cliente</button>
-                    <a href="index.php" class="mt-3 fs12 text-center">Volver a la lista de clientes</a>
+                    <button type="submit" class="boton mt-5 w-100">Agregar Proveedor</button>
+                    <a href="index.php" class="mt-3 fs12 text-center">Volver a la lista de proveedores</a>
                 </form>
             </div>
         </div>

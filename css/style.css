@@ -51,8 +51,12 @@ font-family: 'Montserrat', sans-serif;
 }
 .boton:hover {
     background-color: #2262C6;
+    color:#ffffff;
 
 
+}
+.active {
+    background-color:aquamarine;
 }
 .logo {
     width:200px;
