@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2025 a las 18:40:40
+-- Tiempo de generación: 18-05-2025 a las 19:48:39
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -56,8 +56,7 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`ID_Cliente`, `Nombre`, `Apellidos`, `NIF`, `Direccion`, `Telefono`, `Email`, `Password`) VALUES
 (1, 'Desire Maya', 'Maya', NULL, NULL, '722806566', 'admin@admin', ''),
-(2, 'Desire Maya', 'Ruiz De Valdivia', NULL, NULL, '7228065669', 'peakmanson.4@gmail.com', ''),
-(3, 'Isabel', 'Olivares', NULL, NULL, '610056006', 'isa6_2@hotmail.com', '');
+(2, 'Desire Maya', 'Ruiz De Valdivia', NULL, NULL, '7228065669', 'peakmanson.4@gmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -119,10 +118,7 @@ CREATE TABLE `facturas_venta` (
 --
 
 INSERT INTO `facturas_venta` (`Cod_Factura`, `Fecha`, `Importe`, `ID_Cliente`) VALUES
-(1, '2025-05-08', 33.00, 3),
-(2, '2025-05-17', 264.00, 3),
 (3, '2025-05-07', 95.00, 2),
-(4, '2025-05-07', 99.00, 3),
 (5, '2025-05-02', 64.00, 1),
 (6, '2025-05-24', 66.00, 1);
 
@@ -168,12 +164,8 @@ CREATE TABLE `lineas_venta` (
 --
 
 INSERT INTO `lineas_venta` (`Cod_Factura`, `Num_Linea`, `Codigo`, `Cantidad`, `Precio`, `TotalLinea`) VALUES
-(1, 1, 1, 3, 0.00, 0.09),
-(2, 1, 2, 8, 33.00, 264.00),
-(2, 2, 1, 2, 31.00, 62.00),
 (3, 1, 2, 1, 33.00, 33.00),
 (3, 2, 1, 2, 31.00, 62.00),
-(4, 1, 2, 3, 33.00, 99.00),
 (5, 1, 1, 1, 31.00, 31.00),
 (5, 2, 2, 1, 33.00, 33.00),
 (6, 1, 2, 2, 33.00, 66.00);
@@ -267,7 +259,7 @@ ALTER TABLE `facturas_compra`
 --
 ALTER TABLE `facturas_venta`
   ADD PRIMARY KEY (`Cod_Factura`),
-  ADD KEY `ID_Cliente` (`ID_Cliente`);
+  ADD KEY `fk_facturas_cliente` (`ID_Cliente`);
 
 --
 -- Indices de la tabla `lineas_compra`
@@ -310,7 +302,7 @@ ALTER TABLE `relacion_almacen_productos`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `ID_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID_Cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `empleados`
@@ -357,7 +349,7 @@ ALTER TABLE `facturas_compra`
 -- Filtros para la tabla `facturas_venta`
 --
 ALTER TABLE `facturas_venta`
-  ADD CONSTRAINT `facturas_venta_ibfk_1` FOREIGN KEY (`ID_Cliente`) REFERENCES `clientes` (`ID_Cliente`);
+  ADD CONSTRAINT `fk_facturas_cliente` FOREIGN KEY (`ID_Cliente`) REFERENCES `clientes` (`ID_Cliente`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `lineas_compra`
@@ -370,7 +362,7 @@ ALTER TABLE `lineas_compra`
 -- Filtros para la tabla `lineas_venta`
 --
 ALTER TABLE `lineas_venta`
-  ADD CONSTRAINT `lineas_venta_ibfk_1` FOREIGN KEY (`Cod_Factura`) REFERENCES `facturas_venta` (`Cod_Factura`),
+  ADD CONSTRAINT `lineas_venta_ibfk_1` FOREIGN KEY (`Cod_Factura`) REFERENCES `facturas_venta` (`Cod_Factura`) ON DELETE CASCADE,
   ADD CONSTRAINT `lineas_venta_ibfk_2` FOREIGN KEY (`Codigo`) REFERENCES `productos` (`Codigo`);
 
 --
