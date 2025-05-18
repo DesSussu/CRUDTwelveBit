@@ -51,16 +51,20 @@
             <div class="col-md-9 p-4 pl-5 ">
                 <div id="clientes" class="table-section">
                     <h1 class="fs18 bold fsMono">Lista de clientes</h1>
-                    <p class="text-right"><a href="agregar.php" class="boton bold">Nuevo cliente</a></p>
+                
+                    <p class="text-right">
+                        <a href="crearFacturaVenta.php" class="boton2 bold mr-2 ">Crear factura de compra</a>
+                        <a href="agregar.php" class="boton bold">Nuevo cliente</a>
+                    </p>
                     <table class="w-100">
                         <thead>
                             <tr>
-                                <th>Id</th>
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
                                 <th>Email</th>
                                 <th>Teléfono</th>
-                                <th>Acciones</th>
+                                <th >Acciones</th>
+                                <th class='d-flex justify-content-center'>Facturas</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -72,7 +76,6 @@
                                 if ($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc()) {
                                         echo "<tr>
-                                                <td>" . $row["ID_Cliente"]. "</td>
                                                 <td>" . $row["Nombre"]. "</td>
                                                 <td>" . $row["Apellidos"]. "</td>
                                                 <td>" . $row["Email"]. "</td>
@@ -80,6 +83,9 @@
                                                 <td>
                                                     <a class='mr-4' href='editar.php?id=" . $row["ID_Cliente"] . "'><i class='fa-solid fa-pen-to-square negro fs18'></i></a>
                                                     <a href='eliminar.php?id=" . $row["ID_Cliente"] . "'><i class='fa-solid fa-xmark negro fs18'></i></a>
+                                                </td>
+                                                <td class='d-flex justify-content-center'>
+                                                <a href='verFacturasCliente.php?id=" . $row["ID_Cliente"] . "'><i class='fa-solid fa-eye negro fs18'></i></a>
                                                 </td>
                                             </tr>";
                                     }
@@ -91,7 +97,6 @@
                         </tbody>
                     </table>
                 </div>
-
                 <div id="proveedores" class="table-section" style="display: none;">
                     <h1 class="fs18 bold fsMono">Lista de proveedores</h1>
                     <p class="text-right"><a href="agregarProveedores.php" class="boton bold">Nuevo proveedor</a></p>

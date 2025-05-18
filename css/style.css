@@ -49,7 +49,23 @@ font-family: 'Montserrat', sans-serif;
     border:none;
 
 }
+.boton2 {
+    background-color: #ffffff;
+    border: 1px solid #2262C6 ;
+    border-radius:5px;
+    font-size:12px;
+    padding:8px;
+    color:#2262C6;
+
+}
+
 .boton:hover {
+    background-color: #2262C6;
+    color:#ffffff;
+
+
+}
+.boton2:hover {
     background-color: #2262C6;
     color:#ffffff;
 
