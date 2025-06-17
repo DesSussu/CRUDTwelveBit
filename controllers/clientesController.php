@@ -38,7 +38,7 @@ if (isset($_GET['id'])) {
         exit();
     }
 }
-<?php
+?>
 include 'conexion.php';
 
 if (isset($_GET['id'])) {
