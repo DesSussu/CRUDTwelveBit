@@ -55,7 +55,7 @@ if ($accion === 'eliminar' && isset($_GET['id'])) {
     $stmt->bind_param("i", $id);
 
     if ($stmt->execute()) {
-        // Reorganizar los IDs solo si lo necesitas
+        // Reorganizar los Ids
         $conn->query("SET @count = 0");
         $conn->query("UPDATE productos SET Codigo = @count:= @count + 1");
         $conn->query("ALTER TABLE productos AUTO_INCREMENT = 1");

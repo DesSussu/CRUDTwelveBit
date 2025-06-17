@@ -11,19 +11,41 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script>
+        function showTable(tableId) {
+            // Ocultar todas las tablas
+            document.querySelectorAll('.table-section').forEach(function(section) {
+                section.style.display = 'none';
+            });[]
+            // Mostrar la tabla seleccionada
+            document.getElementById(tableId).style.display = 'block';
+        }
 
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mostrar la tabla de clientes por defecto
+            showTable('clientes');
+            // Añadir eventos de clic a los enlaces de navegación
+            document.querySelectorAll('nav a').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tableId = this.getAttribute('data-table');
+                    showTable(tableId);
+                });
+            });
+        });
+    </script>
 </head>
 <body class="bg-azul overflow-hidden p-4">
     <div class="contenedor2 w-100">
         <div class="row p-4 d-flex justify-content-center">
         <div class="col-md-3 bg-bco p-4 pl-5 ">
-            <img src="img/logoAzul.png" class="logo">
-                <p class="fs18 bold fsMono mt-5">Menu</p>
+            <img src="img/notia.png" class="logo">
+              <p class="fs18 bold fsMono mt-5">Menu</p>
                 <nav class="d-flex flex-column pl-2">
-                    <a href="#" id="nav_0" class="negro bold" data-table="clientes">Clientes</a>
-                    <a href="#" id="nav_1" class="negro bold mt-3" data-table="productos">Productos</a>
-                    <a href="#" id="nav_2" class="negro bold mt-3" data-table="proveedores">Proveedores</a>
-                    <a href="#" id="nav_3" class="negro bold mt-3" data-table="empleados">Empleados</a>
+                    <a href="#" id="nav_0" class="negro bold menu" data-table="clientes">Clientes</a>
+                    <a href="#" id="nav_1" class="negro bold mt-3 menu" data-table="productos">Productos</a>
+                    <a href="#" id="nav_2" class="negro bold mt-3 menu" data-table="proveedores">Proveedores</a>
+                    <a href="#" id="nav_3" class="negro bold mt-3 menu" data-table="empleados">Empleados</a>
                 </nav>
             </div>
             <div class="col-md-9 p-4 pl-5 ">
@@ -47,7 +69,7 @@
                         </thead>
                         <tbody>
                         <?php
-                                include 'conexion.php';
+                                include 'database.php';
                                 $sql = "SELECT * FROM clientes";
                                 $result = $conn->query($sql);
 
@@ -70,6 +92,7 @@
                                 } else {
                                     echo "<tr><td colspan='6'>No hay clientes registrados</td></tr>";
                                 }
+                                $conn->close();
                         ?>
                         </tbody>
                     </table>
@@ -90,7 +113,7 @@
                         </thead>
                         <tbody>
                         <?php
-                                include 'conexion.php';
+                                include 'database.php';
                                 $sql = "SELECT * FROM proveedores";
                                 $result = $conn->query($sql);
 
@@ -111,6 +134,7 @@
                                 } else {
                                     echo "<tr><td colspan='6'>No hay proveedores registrados</td></tr>";
                                 }
+                                $conn->close();
                         ?>
                         </tbody>
                     </table>
@@ -131,7 +155,7 @@
                         </thead>
                         <tbody>
                         <?php
-                                include 'conexion.php';
+                                include 'database.php';
                                 $sql = "SELECT * FROM productos";
                                 $result = $conn->query($sql);
 
@@ -151,6 +175,7 @@
                                 } else {
                                     echo "<tr><td colspan='6'>No hay productos registrados</td></tr>";
                                 }
+                                $conn->close();
                         ?>
                         </tbody>
                     </table>
@@ -172,7 +197,7 @@
                         </thead>
                         <tbody>
                         <?php
-                                include 'conexion.php';
+                                include 'database.php';
                                 $sql = "SELECT * FROM empleados";
                                 $result = $conn->query($sql);
 
@@ -185,19 +210,15 @@
                                                 <td>" . $row["Email"]. "</td>
                                                 <td>" . $row["Telefono"]. "</td>
                                                 <td>
-                                                    <a class='mr-4' href='views/empleados/edit.php?id=" . $row["Cod_Empleado"] . "'>
-                                                        <i class='fa-solid fa-pen-to-square negro fs18'></i>
-                                                    </a>
-                                                    <a href='controllers/empleadosController.php?accion=eliminar&id=" . $row["Cod_Empleado"] . "'>
-                                                        <i class='fa-solid fa-xmark negro fs18'></i>
-                                                    </a>
+                                                    <a class='mr-4' href='editarEmpleados.php?id=" . $row["Cod_Empleado"] . "'><i class='fa-solid fa-pen-to-square negro fs18'></i></a>
+                                                    <a href='eliminarEmpleados.php?id=" . $row["Cod_Empleado"] . "'><i class='fa-solid fa-xmark negro fs18'></i></a>
                                                 </td>
-
                                             </tr>";
                                     }
                                 } else {
                                     echo "<tr><td colspan='6'>No hay empleados registrados</td></tr>";
                                 }
+                                $conn->close();
                         ?>
                         </tbody>
                     </table>
@@ -213,7 +234,5 @@
 
 <!-- Latest compiled JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/tabs.js"></script>
-
 </body>
 </html>
