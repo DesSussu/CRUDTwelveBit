@@ -39,13 +39,13 @@
     <div class="contenedor2 w-100">
         <div class="row p-4 d-flex justify-content-center">
         <div class="col-md-3 bg-bco p-4 pl-5 ">
-            <img src="img/logoAzul.png" class="logo">
+            <img src="img/notia.png" class="logo">
               <p class="fs18 bold fsMono mt-5">Menu</p>
                 <nav class="d-flex flex-column pl-2">
-                    <a href="#" id="nav_0" class="negro bold" data-table="clientes">Clientes</a>
-                    <a href="#" id="nav_1" class="negro bold mt-3" data-table="productos">Productos</a>
-                    <a href="#" id="nav_2" class="negro bold mt-3" data-table="proveedores">Proveedores</a>
-                    <a href="#" id="nav_3" class="negro bold mt-3" data-table="empleados">Empleados</a>
+                    <a href="#" id="nav_0" class="negro bold menu" data-table="clientes">Clientes</a>
+                    <a href="#" id="nav_1" class="negro bold mt-3 menu" data-table="productos">Productos</a>
+                    <a href="#" id="nav_2" class="negro bold mt-3 menu" data-table="proveedores">Proveedores</a>
+                    <a href="#" id="nav_3" class="negro bold mt-3 menu" data-table="empleados">Empleados</a>
                 </nav>
             </div>
             <div class="col-md-9 p-4 pl-5 ">

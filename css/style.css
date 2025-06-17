@@ -7,7 +7,7 @@ font-family: 'Montserrat', sans-serif;
 }
 
 .bg-azul{
-    background-color: #2767CD;
+    background-color: #6c5b7b;
 }
 .bg-bco {
     background-color:#ffffff
@@ -41,7 +41,7 @@ font-family: 'Montserrat', sans-serif;
     font-weight: 700;
 }
 .boton {
-    background-color: #2262C6;
+    background-color: #6c5b7b;
     border-radius:5px;
     font-size:12px;
     padding:8px;
@@ -51,22 +51,22 @@ font-family: 'Montserrat', sans-serif;
 }
 .boton2 {
     background-color: #ffffff;
-    border: 1px solid #2262C6 ;
+    border: 1px solid #6c5b7b ;
     border-radius:5px;
     font-size:12px;
     padding:8px;
-    color:#2262C6;
+    color:#6c5b7b;
 
 }
 
 .boton:hover {
-    background-color: #2262C6;
+    background-color: #5a3070;
     color:#ffffff;
 
 
 }
 .boton2:hover {
-    background-color: #2262C6;
+    background-color: #5a3070;
     color:#ffffff;
 
 
@@ -103,7 +103,17 @@ input {
 }
 
 body{
-    background-color: #2767CD;
+    background-color:  #6c5b7b;
+}
+
+.menu:hover {
+    color: #5a3070;
+}
+
+@media screen and (max-width: 600px) { 
+    .logo {
+        width: 120px;
+    }
 }
 
 
