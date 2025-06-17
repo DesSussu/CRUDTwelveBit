@@ -1,28 +1,5 @@
-<?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'conexion.php';
-
-    $nombre = $_POST['nombre'];
-    $apellidos = $_POST['apellidos'];
-    $email = $_POST['email'];
-    $telefono = $_POST['telefono'];
-
-    $sql = "INSERT INTO empleados (Nombre, Apellidos, Email, Telefono) VALUES ('$nombre', '$apellidos', '$email', '$telefono')";
-
-    if ($conn->query($sql) === TRUE) {
-        echo "<script>alert('Empleado agregado');
-            location.assign('index.php'); </script>";
-    } else {
-        echo "<script>alert('Empleado NO se ha agregado');
-            location.assign('index.php'); </script>";
-    }
-
-    $conn->close();
-}
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,16 +12,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body class="bg-azul overflow-hidden">
     <div class="w-100">
-            <!-- header -->
-            <div class="row">
-                <div class="col-md-12 p-4 pl-5">
+        <!-- header -->
+        <div class="row">
+            <div class="col-md-12 p-4 pl-5">
                 <img src="img\logo.png" alt="logo TwelveBit" class="logo">
-                </div>
             </div>
+        </div>
         <div class="row p-4 d-flex justify-content-center">
             <div class="col-lg-4 col-md-6 col-10 p-5 d-flex flex-column align-items-center contenedor">
-            <h1 class="fs18 bold fsMono mb-4">Agregar Empleado</h1>
-                <form action="agregarEmpleados.php" method="POST" class="d-flex flex-column align-items-center mt-1">
+                <h1 class="fs18 bold fsMono mb-4">Agregar Empleado</h1>
+                <form action="../../controllers/empleadosController.php" method="POST" class="d-flex flex-column align-items-center mt-1">
+                    <input type="hidden" name="accion" value="agregar">
                     <div>
                         <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
                     </div>
@@ -63,12 +41,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 
-<!-- Popper JS -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
