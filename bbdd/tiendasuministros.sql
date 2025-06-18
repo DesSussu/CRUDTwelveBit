@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-06-2025 a las 08:54:48
+-- Tiempo de generación: 18-06-2025 a las 09:11:04
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -121,7 +121,8 @@ CREATE TABLE `facturas_venta` (
 INSERT INTO `facturas_venta` (`Cod_Factura`, `Fecha`, `Importe`, `ID_Cliente`) VALUES
 (7, '2025-06-05', 44.00, 1),
 (8, '2025-06-11', 10.00, 1),
-(9, '2025-06-12', 16.00, 1);
+(9, '2025-06-12', 16.00, 1),
+(10, '2025-06-04', 3.10, 1);
 
 -- --------------------------------------------------------
 
@@ -168,7 +169,8 @@ INSERT INTO `lineas_venta` (`Cod_Factura`, `Num_Linea`, `Codigo`, `Cantidad`, `P
 (7, 1, 3, 2, 16.00, 32.00),
 (7, 2, 1, 1, 12.00, 12.00),
 (8, 1, 2, 1, 10.00, 10.00),
-(9, 1, 4, 8, 2.00, 16.00);
+(9, 1, 4, 8, 2.00, 16.00),
+(10, 1, 1, 2, 1.00, 3.10);
 
 -- --------------------------------------------------------
 
@@ -179,7 +181,7 @@ INSERT INTO `lineas_venta` (`Cod_Factura`, `Num_Linea`, `Codigo`, `Cantidad`, `P
 CREATE TABLE `productos` (
   `Codigo` int(11) NOT NULL,
   `Nombre` varchar(100) DEFAULT NULL,
-  `Precio` decimal(10,2) DEFAULT NULL,
+  `Precio` decimal(10,2) NOT NULL,
   `Stock` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -188,7 +190,7 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`Codigo`, `Nombre`, `Precio`, `Stock`) VALUES
-(1, 'Cien años de soledad', 12.00, 19),
+(1, 'Libreta', 1.55, 98),
 (2, '1984', 10.00, 11),
 (3, 'Libreta \"Penco\"', 16.00, 98),
 (4, 'Boligrafo BIC azul', 2.00, 192);
@@ -316,13 +318,13 @@ ALTER TABLE `empleados`
 -- AUTO_INCREMENT de la tabla `facturas_venta`
 --
 ALTER TABLE `facturas_venta`
-  MODIFY `Cod_Factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Cod_Factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `lineas_venta`
 --
 ALTER TABLE `lineas_venta`
-  MODIFY `Cod_Factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Cod_Factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
