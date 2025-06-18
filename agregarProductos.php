@@ -6,20 +6,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $precio = $_POST['precio'];
     $stock = $_POST['stock'];
 
+    // Verificar si ya existe un producto con ese nombre
+    $check = $conn->prepare("SELECT Codigo FROM productos WHERE Nombre = ?");
+    $check->bind_param("s", $nombre);
+    $check->execute();
+    $check->store_result();
 
+    if ($check->num_rows > 0) {
+        echo "<script>alert('Ya existe un producto con ese nombre');
+            location.assign('index.php'); </script>";
+        $check->close();
+        $conn->close();
+        exit;
+    }
+    $check->close();
+
+    // Insertar nuevo producto si el nombre no está repetido
     $sql = "INSERT INTO productos (Nombre, Precio, Stock) VALUES ('$nombre', '$precio', '$stock')";
 
     if ($conn->query($sql) === TRUE) {
         echo "<script>alert('Producto agregado');
             location.assign('index.php'); </script>";
     } else {
-        echo "<script>alert('Producto NO se ha agregadoS');
+        echo "<script>alert('Producto NO se ha agregado');
             location.assign('index.php'); </script>";
     }
 
     $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
                     </div>
                     <div class="mt-3">
-                        <input type="text" id="precio" name="precio" placeholder="Precio" required>
+                        <input type="number" step="0.01" id="precio" name="precio" placeholder="Precio" required>
                     </div>
                     <div class="mt-3">
                         <input type="stock" id="stock" name="stock" placeholder="Stock" required>

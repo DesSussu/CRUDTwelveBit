@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- header -->
         <div class="row">
             <div class="col-md-12 p-4 pl-5">
-                <img src="img\logo.png" alt="logo TwelveBit" class="logo">
+                <img src="img\notiaBlanco.png" alt="logo TwelveBit" class="logo">
             </div>
         </div>
         <div class="row p-4 d-flex justify-content-center">
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre" value="<?php echo $row['Nombre']; ?>" required>
                 </div>
                 <div class="mt-3">
-                    <input type="text" id="precio" name="precio" placeholder="Precio" value="<?php echo $row['Precio']; ?>" required>
+                    <input type="number" step="0.01" id="precio" name="precio" placeholder="Precio" value="<?php echo $row['Precio']; ?>" required>
                 </div>
                 <div class="mt-3">
                     <input type="stock" id="stock" name="stock" placeholder="Stock" value="<?php echo $row['Stock']; ?>" required>
