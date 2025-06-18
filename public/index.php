@@ -1,4 +1,3 @@
-<!-- filepath: c:\xampp\htdocs\crud\index.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,29 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script>
-        function showTable(tableId) {
-            // Ocultar todas las tablas
-            document.querySelectorAll('.table-section').forEach(function(section) {
-                section.style.display = 'none';
-            });[]
-            // Mostrar la tabla seleccionada
-            document.getElementById(tableId).style.display = 'block';
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mostrar la tabla de clientes por defecto
-            showTable('clientes');
-            // Añadir eventos de clic a los enlaces de navegación
-            document.querySelectorAll('nav a').forEach(function(link) {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const tableId = this.getAttribute('data-table');
-                    showTable(tableId);
-                });
-            });
-        });
-    </script>
 </head>
 <body class="bg-azul overflow-hidden p-4">
     <div class="contenedor2 w-100">
