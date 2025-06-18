@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- header -->
         <div class="row">
             <div class="col-md-12 p-4 pl-5">
-                <img src="img\logo.png" alt="logo TwelveBit" class="logo">
+                <img src="img\notiaBlanco.png" alt="logo TwelveBit" class="logo">
             </div>
         </div>
         <div class="row p-4 d-flex justify-content-center">

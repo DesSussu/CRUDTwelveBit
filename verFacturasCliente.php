@@ -32,7 +32,7 @@ $resFacturas = $conn->query(
     <div class="contenedor2 w-100">
         <div class="row p-4 d-flex justify-content-center">
             <div class="col-md-3 bg-bco p-4 pl-5 ">
-                <img src="img/logoAzul.png" class="logo mb-4">
+                <img src="img/notia.png" class="logo mb-4">
                 <p class="fs18 bold fsMono mt-5">Menu</p>
                 <nav class="d-flex flex-column pl-2">
                     <a href="index.php" class="negro bold">Clientes</a>

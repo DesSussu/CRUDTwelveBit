@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-05-2025 a las 19:48:39
+-- Tiempo de generación: 18-06-2025 a las 08:54:48
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.0.30
 
@@ -55,8 +55,8 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`ID_Cliente`, `Nombre`, `Apellidos`, `NIF`, `Direccion`, `Telefono`, `Email`, `Password`) VALUES
-(1, 'Desire Maya', 'Maya', NULL, NULL, '722806566', 'admin@admin', ''),
-(2, 'Desire Maya', 'Ruiz De Valdivia', NULL, NULL, '7228065669', 'peakmanson.4@gmail.com', '');
+(1, 'Isabel', 'Olivares', NULL, NULL, '123 456 788', 'isa6_2@hotmail.com', ''),
+(2, 'Desire Maya', 'De Valdivia', NULL, NULL, '822 829 281', 'desiremrv@gmail.com', '$2y$10$4LKJmSGbzSJ.0ZOKhaIkwu1yGv8JBdrcFSNnMIyRkI330hwFp26Zm');
 
 -- --------------------------------------------------------
 
@@ -69,15 +69,16 @@ CREATE TABLE `empleados` (
   `Nombre` varchar(100) DEFAULT NULL,
   `Apellidos` varchar(100) DEFAULT NULL,
   `Telefono` varchar(20) DEFAULT NULL,
-  `Email` varchar(100) DEFAULT NULL
+  `Email` varchar(100) DEFAULT NULL,
+  `Password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `empleados`
 --
 
-INSERT INTO `empleados` (`Cod_Empleado`, `Nombre`, `Apellidos`, `Telefono`, `Email`) VALUES
-(1, 'Desire Maya', 'Pitufa', '722806566', 'admin@admin');
+INSERT INTO `empleados` (`Cod_Empleado`, `Nombre`, `Apellidos`, `Telefono`, `Email`, `Password`) VALUES
+(1, 'Desire Maya', 'Ruiz de Valdivia', '722806566', 'admin@admin', '');
 
 -- --------------------------------------------------------
 
@@ -118,9 +119,9 @@ CREATE TABLE `facturas_venta` (
 --
 
 INSERT INTO `facturas_venta` (`Cod_Factura`, `Fecha`, `Importe`, `ID_Cliente`) VALUES
-(3, '2025-05-07', 95.00, 2),
-(5, '2025-05-02', 64.00, 1),
-(6, '2025-05-24', 66.00, 1);
+(7, '2025-06-05', 44.00, 1),
+(8, '2025-06-11', 10.00, 1),
+(9, '2025-06-12', 16.00, 1);
 
 -- --------------------------------------------------------
 
@@ -164,11 +165,10 @@ CREATE TABLE `lineas_venta` (
 --
 
 INSERT INTO `lineas_venta` (`Cod_Factura`, `Num_Linea`, `Codigo`, `Cantidad`, `Precio`, `TotalLinea`) VALUES
-(3, 1, 2, 1, 33.00, 33.00),
-(3, 2, 1, 2, 31.00, 62.00),
-(5, 1, 1, 1, 31.00, 31.00),
-(5, 2, 2, 1, 33.00, 33.00),
-(6, 1, 2, 2, 33.00, 66.00);
+(7, 1, 3, 2, 16.00, 32.00),
+(7, 2, 1, 1, 12.00, 12.00),
+(8, 1, 2, 1, 10.00, 10.00),
+(9, 1, 4, 8, 2.00, 16.00);
 
 -- --------------------------------------------------------
 
@@ -188,8 +188,10 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`Codigo`, `Nombre`, `Precio`, `Stock`) VALUES
-(1, 'bnnn', 31.00, 76),
-(2, 'Switch azul', 33.00, 64);
+(1, 'Cien años de soledad', 12.00, 19),
+(2, '1984', 10.00, 11),
+(3, 'Libreta \"Penco\"', 16.00, 98),
+(4, 'Boligrafo BIC azul', 2.00, 192);
 
 -- --------------------------------------------------------
 
@@ -211,7 +213,7 @@ CREATE TABLE `proveedores` (
 --
 
 INSERT INTO `proveedores` (`ID_Proveedor`, `Nombre`, `CIF`, `Direccion`, `Telefono`, `Email`) VALUES
-(1, 'Gabriela', '8743589375834', 'Calle Vicent Blasco Ibañez', '2343', NULL);
+(1, 'Gabriela', '8743589375834', 'Calle Vicent Blasco Ibañez', '123 456 678', NULL);
 
 -- --------------------------------------------------------
 
@@ -314,19 +316,19 @@ ALTER TABLE `empleados`
 -- AUTO_INCREMENT de la tabla `facturas_venta`
 --
 ALTER TABLE `facturas_venta`
-  MODIFY `Cod_Factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Cod_Factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `lineas_venta`
 --
 ALTER TABLE `lineas_venta`
-  MODIFY `Cod_Factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Cod_Factura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `Codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Codigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedores`

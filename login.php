@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     // Verificamos si el usuario existe en la base de datos
-    $sql = "SELECT * FROM clientes WHERE Email = '$email'";
+    $sql = "SELECT * FROM empleados WHERE Email = '$email'";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verificamos la contraseña
         if (password_verify($password, $row['Password'])) {
             // Iniciamos sesión
-            $_SESSION['user_id'] = $row['ID_Cliente'];
+            $_SESSION['user_id'] = $row['Cod_Empleado'];
             $_SESSION['user_name'] = $row['Nombre'];
             echo "<script>alert('Inicio de sesión exitoso');
                 location.assign('index.php'); </script>";
@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- header -->
         <div class="row">
             <div class="col-md-12 p-4 pl-5">
-            <img src="img\logo.png" alt="logo TwelveBit" class="logo">
+            <img src="img\notiaBlanco.png" alt="logo Notia" class="logo">
             </div>
         </div>
         <!-- End of header -->

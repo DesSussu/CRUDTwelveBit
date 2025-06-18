@@ -7,7 +7,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // De esta forma se encripta la contraseña
 
-    $sql = "INSERT INTO clientes (Nombre, Apellidos, Email, Password) VALUES ('$nombre', '$apellido', '$email', '$password')";
+    // Validar email válido
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<script>alert('Formato de email no válido'); location.assign('registro.php');</script>";
+        exit;
+    }
+
+    // Validar que el email sea @gmail.com o @gmail.es
+    if (!preg_match("/^[a-zA-Z0-9._%+-]+@gmail\.(com|es)$/", $email)) {
+        echo "<script>alert('Solo se permiten correos de Gmail (.com o .es)'); location.assign('registro.php');</script>";
+        exit;
+    }
+
+    // Evitar duplicados (cambio: ID_Cliente → Cod_Empleado)
+    $check = $conn->prepare("SELECT Cod_Empleado FROM empleados WHERE Email = ?");
+    $check->bind_param("s", $email);
+    $check->execute();
+    $check->store_result();
+
+    if ($check->num_rows > 0) {
+        echo "<script>alert('Este correo ya está registrado'); location.assign('registro.php');</script>";
+        $check->close();
+        $conn->close();
+        exit;
+    }
+    $check->close();
+
+    // Insertar nuevo empleado
+    $sql = "INSERT INTO empleados (Nombre, Apellidos, Email, Password) VALUES ('$nombre', '$apellido', '$email', '$password')";
 
     if ($conn->query($sql) === TRUE) {
         echo "<script>alert('Usuario registrado exitosamente');
@@ -38,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- header -->
         <div class="row">
             <div class="col-md-12 p-4 pl-5">
-            <img src="img\logo.png" alt="logo TwelveBit" class="logo">
+            <img src="img\notiaBlanco.png" alt="logo Notia" class="logo">
             </div>
         </div>
          <!-- Fin header -->
@@ -68,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <!-- Footer -->
         <div class="row">
             <div class="col-md-12 p-4 pl-5 mt-5">
-            <p class="fs12 bco text-center bold">Copyright @twelveBit</p>
+            <p class="fs12 bco text-center bold">Copyright @notia</p>
             </div>
         </div>
         <!--Fin Footer -->

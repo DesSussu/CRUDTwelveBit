@@ -66,10 +66,15 @@ if (isset($_POST['crear_factura_venta'])) {
         $stmt3->execute();
     }
 
-    echo "Factura y líneas guardadas correctamente. <a href='index.php'>Volver</a>";
-    // header("Location: index.php?factura_venta_creada=1");
-    exit();
+   echo "<script>
+            alert('Factura y líneas guardadas correctamente');
+            window.location.href = 'index.php';
+        </script>";
+exit();
 } else {
-    echo "No se ha enviado el formulario correctamente.";
+    echo "<script>
+            alert('No se ha enviado el formulario correctamente.');
+            window.location.href = 'index.php';
+        </script>";
 }
 ?>
